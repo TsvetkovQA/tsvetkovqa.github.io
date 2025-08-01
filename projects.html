@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калориен Калкулатор и Диети</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.imgur.com/W5Q3VS3.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 40%;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #ffcc00;
+        }
+
+        label, input, select, button {
+            display: block;
+            margin: 10px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #ffcc00, #ffaa00);
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #ffaa00, #ff8800);
+            transform: scale(1.1);
+            box-shadow: 0px 7px 10px rgba(255, 170, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Калориен Калкулатор и Диети</div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Калориен Калкулатор</h2>
+            <label>Тегло (кг): <input type="number" id="weight"></label>
+            <label>Ръст (см): <input type="number" id="height"></label>
+            <label>Възраст: <input type="number" id="age"></label>
+            <label for="activity">Ниво на активност:</label>
+            <select id="activity">
+                <option value="1.2">Заседнал начин на живот</option>
+                <option value="1.375">Лека активност</option>
+                <option value="1.55">Умерена активност</option>
+                <option value="1.725">Висока активност</option>
+                <option value="1.9">Спорт професионално</option>
+            </select>
+            <button class="btn" onclick="calculateCalories()">Изчисли</button>
+            <p id="caloriesResult"></p>
+            <p id="bmiResult"></p>
+            <p id="dietAdvice"></p>
+        </div>
+        
+        <div class="card">
+            <h2>Диети</h2>
+            <button class="btn" onclick="window.location.href='diets.html'">Преглед на диетите</button>
+        </div>
+    </div>
+
+    <button class="btn" onclick="window.location.href='index.html'">Назад към началната страница</button>
+
+    <script>
+        function calculateCalories() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value);
+            let age = parseFloat(document.getElementById("age").value);
+            let activity = parseFloat(document.getElementById("activity").value);
+            
+            if (!weight || !height || !age) {
+                document.getElementById("caloriesResult").innerText = "Моля, попълнете всички полета.";
+                return;
+            }
+            
+            let bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            let dailyCalories = bmr * activity;
+            let bmi = weight / ((height / 100) * (height / 100));
+            
+            document.getElementById("caloriesResult").innerText = "Вашият препоръчителен дневен прием на калории е: " + dailyCalories.toFixed(2) + " kcal.";
+            document.getElementById("bmiResult").innerText = "Вашият BMI е: " + bmi.toFixed(2);
+            
+            let advice = "";
+            if (bmi < 18.5) {
+                advice = "Вие сте под нормата. Препоръчва се хранителен режим за покачване на килограми.";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                advice = "Вашият BMI е в нормалните граници. Препоръчва се балансирана диета за поддържане.";
+            } else if (bmi >= 25 && bmi < 30) {
+                advice = "Имате наднормено тегло. Препоръчва се хранителен режим за намаляване на мазнините.";
+            } else {
+                advice = "Имате затлъстяване. Консултирайте се с диетолог за персонализиран хранителен режим.";
+            }
+            
+            document.getElementById("dietAdvice").innerText = advice;
+        }
+    </script>
+
+</body>
+</html>

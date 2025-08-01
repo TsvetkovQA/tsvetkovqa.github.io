@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Начало - Моето портфолио</title>
+    <style>
+        /* Основни стилове */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.imgur.com/L6OYwAe.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Хедър */
+        .header {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Контейнер за картите */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Карти */
+        .card {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            animation: fadeInUp 1.2s ease-in-out;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 7px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .card h2 {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        /* Бутон с "Чукни тук" */
+        .card a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .card a:hover {
+            background: #ffaa00;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Оптимизация за мобилни устройства */
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедър -->
+    <div class="header">Моето портфолио</div>
+
+    <!-- Контейнер за картите -->
+    <div class="card-container">
+        <div class="card">
+            <h2>За мен</h2>
+            <p>Научи повече за мен и моите умения.</p>
+            <a href="about.html">Чукни тук</a>
+        </div>
+
+        <div class="card">
+            <h2>Калориен Калкулатор и Диети</h2>
+            <p>Разгледай моите полезни инструменти.</p>
+            <a href="projects.html">Чукни тук</a>
+        </div>
+
+        <div class="card">
+            <h2>Блог</h2>
+            <p>Прочети полезни статии за QA и автоматизация.</p>
+            <a href="blog.html">Чукни тук</a>
+        </div>
+
+        <div class="card">
+            <h2>Контакти</h2>
+            <p>Свържи се с мен чрез контактната форма.</p>
+            <a href="contact.html">Чукни тук</a>
+        </div>
+		
+		<div class="card">
+            <h2>Авторски книги</h2>
+            <p>Лично творчество</p>
+            <a href="Mybooks.html">Чукни тук</a>
+        </div>
+		
+    </div>
+
+</body>
+</html>

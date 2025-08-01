@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог - QA и технологии</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.imgur.com/jTTDdAO.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+        }
+
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .blog-card {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            animation: fadeInUp 1.2s ease-in-out;
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-7px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 7px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .blog-card h2 {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .blog-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .blog-card a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .blog-card a:hover {
+            background: #ffaa00;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #ffaa00;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .blog-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .blog-card {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Блог - QA, Автоматизация и Технологии</div>
+
+    <div class="blog-container">
+        <div class="blog-card">
+            <h2>QA или Програмиране – Кое да изберем?</h2>
+            <p>Разглеждаме разликите между QA и програмирането и кой път е по-добър за теб.</p>
+            <a href="qa-vs-programming.html">Прочети повече</a>
+        </div>
+
+        <div class="blog-card">
+            <h2>Основи на автоматизираното тестване</h2>
+            <p>Запознаване с автоматизацията в QA. Кои инструменти да използваме?</p>
+            <a href="automation-basics.html">Прочети повече</a>
+        </div>
+
+        <div class="blog-card">
+            <h2>Как да пишем ефективни тест кейсове?</h2>
+            <p>Структура и техники за ефективно писане на тестови сценарии.</p>
+            <a href="test-cases.html">Прочети повече</a>
+        </div>
+
+        <div class="blog-card">
+            <h2>Ресурси за обучение – Как да станем по-добри в програмирането и QA?</h2>
+            <p>Линкове към сайтове, книги, форуми и полезни източници за развитие на уменията.</p>
+            <a href="learning-resources.html">Прочети повече</a>
+        </div>
+
+        <div class="blog-card">
+            <h2>За любители на електронните книги</h2>
+            <p>Художествена литература за свободното време.</p>
+            <a href="ebooks.html">Прочети повече</a>
+        </div>
+
+        <div class="blog-card">
+            <h2>Кой програмен език да изберем?</h2>
+            <p>Научете кои езици за програмиране са най-търсени, лесни за учене и подходящи за различни цели.</p>
+            <a href="programming-languages.html">Прочети повече</a>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <a href="index.html" class="btn">Към началната страница</a>
+    </div>
+
+</body>
+</html>

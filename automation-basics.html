@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основи на автоматизираното тестване</title>
+    <style>
+        /* Основни стилове */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.imgur.com/j8y9AFJ.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Хедър */
+        .header {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Основен контейнер */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        h2 {
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Кодов блок */
+        .code-block {
+            background: black;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-line;
+            margin-top: 15px;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        /* Бутони */
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #ffaa00;
+        }
+
+        /* Мобилна оптимизация */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедър -->
+    <div class="header">Основи на автоматизираното тестване</div>
+
+    <!-- Основен контейнер -->
+    <div class="container">
+        <h2>Какво представлява автоматизираното тестване?</h2>
+        <p>Автоматизираното тестване е процес, при който използваме **скриптове и инструменти**, за да проверим дали даден софтуер работи правилно. Вместо да изпълняваме тестовете ръчно, използваме **автоматизирани тестови сценарии**, които повтарят едни и същи действия бързо и ефективно.</p>
+
+        <h2>Популярни инструменти за автоматизиране</h2>
+        <ul>
+            <li><strong>Selenium</strong> – най-известният инструмент за уеб тестване.</li>
+            <li><strong>Cypress</strong> – модерен инструмент за front-end тестове.</li>
+            <li><strong>Playwright</strong> – нова технология за cross-browser тестове.</li>
+            <li><strong>Postman</strong> – използва се за API тестване.</li>
+        </ul>
+
+        <h2>Примерен автоматизиран тест със Selenium (Python)</h2>
+        <div class="code-block">
+            from selenium import webdriver
+            from selenium.webdriver.common.by import By
+
+            driver = webdriver.Chrome()
+            driver.get("https://example.com")
+
+            button = driver.find_element(By.ID, "login")
+            button.click()
+
+            print("Тестът премина успешно!")
+            driver.quit()
+        </div>
+
+        <h2>Предимства и недостатъци</h2>
+        <table>
+            <tr>
+                <th>Предимства</th>
+                <th>Недостатъци</th>
+            </tr>
+            <tr>
+                <td>Спестява време и намалява грешките.</td>
+                <td>Отнема време за настройка и поддръжка.</td>
+            </tr>
+            <tr>
+                <td>Може да изпълнява тестове 24/7.</td>
+                <td>Не е подходящо за всички видове тестове.</td>
+            </tr>
+            <tr>
+                <td>Позволява повторно използване на тестови сценарии.</td>
+                <td>Изисква програмистки умения.</td>
+            </tr>
+        </table>
+
+        <h2>Кога да използваме автоматизирано тестване?</h2>
+        <p>Ако даден тест трябва да се изпълнява многократно и е критичен за софтуера, **автоматизацията е добър избор**. Но за **нови или бързо променящи се функционалности**, ръчните тестове все още са полезни.</p>
+
+        <!-- Бутони за навигация -->
+        <div class="buttons">
+            <a href="blog.html" class="btn">Назад към блога</a>
+            <a href="index.html" class="btn">Към началната страница</a>
+        </div>
+    </div>
+
+</body>
+</html>

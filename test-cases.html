@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как да пишем ефективни тест кейсове?</title>
+    <style>
+        /* Основни стилове */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.imgur.com/vcT7G57.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Хедър */
+        .header {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Основен контейнер */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        h2 {
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Таблица */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ffcc00;
+            text-align: center;
+        }
+
+        th {
+            background: rgba(255, 204, 0, 0.3);
+        }
+
+        /* Бутони */
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #ffaa00;
+        }
+
+        /* Мобилна оптимизация */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедър -->
+    <div class="header">Как да пишем ефективни тест кейсове?</div>
+
+    <!-- Основен контейнер -->
+    <div class="container">
+        <h2>Защо тест кейсовете са важни?</h2>
+        <p>Тест кейсовете са основен елемент в процеса на **осигуряване на качеството (QA)**. Те описват стъпките за изпълнение на тест, **очакваните резултати** и **критериите за успех**, което позволява **консистентно и ефективно тестване**.</p>
+
+        <h2>Основни елементи на един тест кейс</h2>
+        <ul>
+            <li><strong>Име на тест кейса</strong> – кратко и ясно описание</li>
+            <li><strong>Предусловия</strong> – какви условия трябва да са изпълнени преди теста</li>
+            <li><strong>Стъпки за изпълнение</strong> – последователност от действия</li>
+            <li><strong>Очакван резултат</strong> – какво трябва да се случи</li>
+            <li><strong>Приоритет</strong> – висока, средна или ниска важност</li>
+        </ul>
+
+        <h2>Примерен тест кейс</h2>
+        <table>
+            <tr>
+                <th>Име на теста</th>
+                <th>Стъпки</th>
+                <th>Очакван резултат</th>
+                <th>Приоритет</th>
+            </tr>
+            <tr>
+                <td>Вход в системата с валидни данни</td>
+                <td>
+                    1. Отвори login страницата <br>
+                    2. Въведи валиден имейл и парола <br>
+                    3. Натисни бутона „Вход“
+                </td>
+                <td>Потребителят успешно влиза в акаунта си.</td>
+                <td>Висок</td>
+            </tr>
+            <tr>
+                <td>Грешно въвеждане на парола</td>
+                <td>
+                    1. Отвори login страницата <br>
+                    2. Въведи валиден имейл, но грешна парола <br>
+                    3. Натисни бутона „Вход“
+                </td>
+                <td>Излиза съобщение „Грешна парола“.</td>
+                <td>Среден</td>
+            </tr>
+            <tr>
+                <td>Възстановяване на парола</td>
+                <td>
+                    1. Отвори login страницата <br>
+                    2. Натисни „Забравена парола?“ <br>
+                    3. Въведи имейл и изпрати заявка
+                </td>
+                <td>Потребителят получава имейл за промяна на паролата.</td>
+                <td>Висок</td>
+            </tr>
+        </table>
+
+        <h2>Добри практики при писане на тест кейсове</h2>
+        <ul>
+            <li>✅ **Бъди ясен и точен** – използвай ясни стъпки и точни инструкции.</li>
+            <li>✅ **Използвай реалистични данни** – примерни имейли и пароли.</li>
+            <li>✅ **Добавяй приоритет** – не всички тестове са еднакво важни.</li>
+            <li>✅ **Следвай стандартизирана структура** – улеснява анализа и изпълнението.</li>
+            <li>✅ **Обхващай както позитивни, така и негативни сценарии**.</li>
+        </ul>
+
+        <!-- Бутони за навигация -->
+        <div class="buttons">
+            <a href="blog.html" class="btn">Назад към блога</a>
+            <a href="index.html" class="btn">Към началната страница</a>
+        </div>
+    </div>
+
+</body>
+</html>
