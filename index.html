@@ -1,142 +1,317 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Iliya Tsvetkov | Futuristic Portal</title>
 
-    <title>Галерия от идеи</title>
-    <meta name="description" content="Официалното портфолио на Илиян Цветков с полезни инструменти, калкулатори и лични проекти." />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Open Graph за социални мрежи -->
-    <meta property="og:title" content="Галерия от идеи – Iliya Tsvetkov" />
-    <meta property="og:description" content="Разгледай моите инструменти, блог и авторски проекти." />
-    <meta property="og:image" content="https://itsvetkov.art/og-image.jpg" />
-    <meta property="og:url" content="https://itsvetkov.art" />
-    <meta property="og:type" content="website" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family: 'Inter', sans-serif;
+    color:white;
+    overflow-x:hidden;
+    background: linear-gradient(135deg,#0b0b12,#111126,#0b0b12);
+    position:relative;
+}
 
-    <!-- Favicon (по избор) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+/* PARTICLE CANVAS */
+#particle-canvas{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:-3;
+}
 
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: url('https://i.imgur.com/L6OYwAe.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .header {
-            background: rgba(0, 0, 0, 0.75);
-            padding: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            width: 100%;
-            position: relative;
-        }
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .card {
-            width: 300px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease-in-out;
-            animation: fadeInUp 1.2s ease-in-out;
-            position: relative;
-        }
-        .card:hover {
-            transform: translateY(-7px);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0px 7px 20px rgba(255, 255, 255, 0.4);
-        }
-        .card h2 {
-            color: #ffcc00;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .card p {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-        .card a {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #ffcc00;
-            color: black;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s ease-in-out;
-        }
-        .card a:hover {
-            background: #ffaa00;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            .card-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card {
-                width: 85%;
-            }
-        }
-    </style>
+/* GRID + CIRCUITS OVERLAY */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140,0,255,0.03) 1px, transparent 1px);
+    background-size: 70px 70px;
+    animation: gridMove 25s linear infinite;
+    z-index:-2;
+}
+@keyframes gridMove{0%{transform:translateY(0px);}100%{transform:translateY(70px);}}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity:0.05;
+    z-index:-1;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    position:relative;
+}
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;height:500px;
+    background: radial-gradient(circle, rgba(0,240,255,0.15), transparent 70%);
+    filter:blur(100px);
+    z-index:-1;
+    animation: pulseGlow 3s infinite alternate;
+}
+@keyframes pulseGlow{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.2);}
+}
+
+/* LOGO */
+.logo svg{
+    filter: drop-shadow(0 0 10px #00f0ff);
+    animation: floatLogo 3s ease-in-out infinite, pulseLogo 2s infinite alternate;
+    pointer-events:none; /* Важно: не активен при hover */
+}
+@keyframes floatLogo{
+    0%{transform: translateY(0px);}
+    50%{transform: translateY(-6px);}
+    100%{transform: translateY(0px);}
+}
+@keyframes pulseLogo{
+    0%{filter: drop-shadow(0 0 5px #00f0ff);}
+    50%{filter: drop-shadow(0 0 20px #00f0ff);}
+    100%{filter: drop-shadow(0 0 5px #00f0ff);}
+}
+
+/* HERO TEXT */
+.hero h1{
+    font-size:56px;
+    font-weight:600;
+    margin-bottom:20px;
+    background: linear-gradient(90deg,#00f0ff,#8f00ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: textFlicker 2s infinite;
+}
+@keyframes textFlicker{
+    0%,19%,21%,23%,25%,54%,56%,100%{opacity:1;}
+    20%,22%,24%,55%{opacity:0.4;}
+}
+.hero p{
+    color:#aaa;
+    margin-bottom:40px;
+    font-size:18px;
+}
+.buttons a{
+    text-decoration:none;
+    padding:14px 28px;
+    margin:10px;
+    border-radius:30px;
+    font-weight:600;
+    transition:0.4s;
+    display:inline-block;
+}
+.primary{
+    background:linear-gradient(90deg,#00f0ff,#8f00ff);
+    color:white;
+}
+.primary:hover{
+    box-shadow:0 0 30px #00f0ff;
+    transform:translateY(-5px);
+}
+.secondary{
+    border:1px solid #00f0ff;
+    color:#00f0ff;
+}
+.secondary:hover{
+    background:#00f0ff;
+    color:black;
+    box-shadow:0 0 25px #00f0ff;
+}
+
+/* CARDS */
+.section{
+    padding:100px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+.card-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:35px;
+}
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    width:280px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    transition:0.4s;
+    opacity:0;
+    transform:translateY(30px);
+}
+.card.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#00f0ff;
+    box-shadow:0 0 35px rgba(0,255,255,0.4);
+}
+.card h2{margin-bottom:15px;color:#00f0ff;}
+.card p{color:#bbb;font-size:14px;margin-bottom:20px;}
+.card a{text-decoration:none;color:white;border-bottom:1px solid #00f0ff;padding-bottom:3px;}
+
+/* FOOTER */
+footer{
+    padding:40px;
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .hero h1{font-size:36px;}
+    .card{width:90%;}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="header">Галерия от идеи</div>
+<canvas id="particle-canvas"></canvas>
 
+<section class="hero">
+    <div class="logo">
+      <svg width="250" height="50" viewBox="0 0 250 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="40" font-family="Orbitron" font-size="36" fill="url(#gradient)">ITSVETKOV</text>
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0" x2="250" y2="50" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#00f0ff"/>
+            <stop offset="1" stop-color="#8f00ff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h1>Digital Creations</h1>
+    <p>Код. Истории. Инструменти. Въображение без граници.</p>
+
+    <div class="buttons">
+        <a href="#projects" class="primary">Разгледай</a>
+        <a href="contact.html" class="secondary">Свържи се</a>
+    </div>
+</section>
+
+<section class="section" id="projects">
     <div class="card-container">
         <div class="card">
             <h2>За мен</h2>
-            <p>Научи повече за мен и моите умения.</p>
-            <a href="about.html">Чукни тук</a>
+            <p>Кой стои зад идеите и проектите.</p>
+            <a href="about.html">Виж повече</a>
         </div>
-
         <div class="card">
-            <h2>Калориен Калкулатор и Диети</h2>
-            <p>Разгледай моите полезни инструменти.</p>
-            <a href="projects.html">Чукни тук</a>
+            <h2>Инструменти</h2>
+            <p>Калкулатори и полезни уеб решения.</p>
+            <a href="projects.html">Виж повече</a>
         </div>
-
         <div class="card">
             <h2>Блог</h2>
-            <p>Прочети полезни статии за QA и автоматизация.</p>
-            <a href="blog.html">Чукни тук</a>
+            <p>QA, автоматизация и технологии.</p>
+            <a href="blog.html">Виж повече</a>
         </div>
-
+        <div class="card">
+            <h2>Книги</h2>
+            <p>Авторско творчество и истории.</p>
+            <a href="Mybooks.html">Виж повече</a>
+        </div>
         <div class="card">
             <h2>Контакти</h2>
-            <p>Свържи се с мен чрез контактната форма.</p>
-            <a href="contact.html">Чукни тук</a>
-        </div>
-
-        <div class="card">
-            <h2>Авторски книги</h2>
-            <p>Лично творчество</p>
-            <a href="Mybooks.html">Чукни тук</a>
+            <p>Свържи се с мен директно.</p>
+            <a href="contact.html">Виж повече</a>
         </div>
     </div>
+</section>
+
+<footer>
+© 2025 Iliya Tsvetkov | Digital Identity
+</footer>
+
+<script>
+// PARTICLES
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+let particles = [];
+window.addEventListener('resize', ()=>{ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; });
+
+class Particle{
+    constructor(){
+        this.x=Math.random()*w;
+        this.y=Math.random()*h;
+        this.vx=(Math.random()-0.5)*0.8;
+        this.vy=(Math.random()-0.5)*0.8;
+        this.size=Math.random()*2+1;
+        this.alpha=Math.random()*0.5+0.2;
+    }
+    update(){
+        this.x+=this.vx; this.y+=this.vy;
+        if(this.x<0)this.x=w; if(this.x>w)this.x=0;
+        if(this.y<0)this.y=h; if(this.y>h)this.y=0;
+    }
+    draw(){
+        ctx.fillStyle=`rgba(0,255,255,${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+    }
+}
+
+for(let i=0;i<200;i++) particles.push(new Particle());
+
+function animateParticles(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{p.update();p.draw();});
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// MOUSE INTERACTION (subtle)
+let mouse = {x: w/2, y: h/2};
+canvas.addEventListener('mousemove', e=>{
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+// SCROLL REVEAL FOR CARDS
+const cards = document.querySelectorAll('.card');
+function revealCards(){
+    const triggerBottom = window.innerHeight * 0.85;
+    cards.forEach(card=>{
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom){card.classList.add('visible');}
+        else{card.classList.remove('visible');}
+    });
+}
+window.addEventListener('scroll', revealCards);
+window.addEventListener('load', revealCards);
+</script>
 
 </body>
 </html>
